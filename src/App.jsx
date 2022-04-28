@@ -13,6 +13,7 @@ _jobs.forEach((job) => {
 const techItemsUrl = 'https://edwardtanguay.netlify.app/share/techItems.json';
 
 const statuses = ['send', 'wait', 'interview', 'declined', 'accepted'];
+const displayKinds = ['list', 'full', 'addJob'];
 
 function App() {
 	const [displayKind, setDisplayKind] = useState('');
@@ -63,7 +64,13 @@ function App() {
 	}, [displayKind, jobs]);
 
 	const handleToggleView = () => {
-		const _displayKind = displayKind === 'full' ? 'list' : 'full';
+		let displayKindIndex = displayKinds.indexOf(displayKind);
+		displayKindIndex++;
+		if (displayKindIndex > displayKinds.length - 1) {
+			displayKindIndex = 0;
+		}
+		const _displayKind = displayKinds[displayKindIndex];
+		//console.log(_displayKind);
 		setDisplayKind(_displayKind);
 	};
 
@@ -88,6 +95,8 @@ function App() {
 			setUserGroup('fullAccessMembers');
 			setUserIsLoggedIn(true);
 			setFormMessage('');
+			setFieldLogin('');
+			setFieldPassword('');
 		} else {
 			setFormMessage('bad login');
 		}
@@ -100,12 +109,11 @@ function App() {
 			setUserIsLoggedIn(true);
 			setFormMessage('');
 			setDisplayKind('list');
+			setFieldLogin('');
+			setFieldPassword('');
 		} else {
-			setFormMessage('bad login');
+			setFormMessage('Bad Login !!! Check your info');
 		}
-
-		setFieldLogin('');
-		setFieldPassword('');
 	};
 
 	const handleFieldLogin = (e) => {
