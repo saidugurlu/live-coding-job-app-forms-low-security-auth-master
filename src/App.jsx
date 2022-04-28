@@ -5,7 +5,7 @@ import { JobsFull } from './components/JobsFull';
 import { JobsList } from './components/JobsList';
 import md5 from 'md5';
 import { ValidationFieldRequired } from './components/ValidationFieldRequired';
-
+import { AddJobPage } from './components/AddJobPage';
 _jobs.forEach((job) => {
 	job.status = 'accepted';
 });
@@ -155,17 +155,12 @@ function App() {
 						/>
 					)}
 
-					{displayKind === 'list' && (
-						<JobsList jobs={jobs} />
-					)}
+					{displayKind === 'list' && <JobsList jobs={jobs} />}
 
-					{displayKind === 'addJob' && (
-					<div>add-job page</div>
-					)}
+					{displayKind === 'addJob' && <AddJobPage />}
 				</>
 			) : (
 				<form>
-	
 					<fieldset>
 						<legend>Welcome</legend>
 						{formMessage !== '' && (
