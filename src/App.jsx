@@ -121,6 +121,11 @@ function App() {
 		setUserIsLoggedIn(false);
 	};
 
+	const formIsValid = () => {
+		return (
+			fieldLogin.trim().length === 0 || fieldPassword.trim().length === 0
+		);
+	};
 	return (
 		<div className="App">
 			<h1>Job Application Process</h1>
@@ -173,7 +178,12 @@ function App() {
 							<ValidationFieldRequired field={fieldPassword} />
 						</div>
 						<div className="buttonRow">
-							<button onClick={handleSubmitButton}>Enter</button>
+							<button
+								disabled={formIsValid()}
+								onClick={handleSubmitButton}
+							>
+								Enter
+							</button>
 						</div>
 					</fieldset>
 				</form>
