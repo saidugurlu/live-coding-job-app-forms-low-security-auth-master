@@ -5,15 +5,16 @@ import { JobsFull } from './components/JobsFull';
 import { JobsList } from './components/JobsList';
 import md5 from 'md5';
 import { ValidationFieldRequired } from './components/ValidationFieldRequired';
-import { AddJobPage } from './components/AddJobPage';
+import AddJobPage from './components/AddJobPage';
+
 _jobs.forEach((job) => {
 	job.status = 'accepted';
 });
 
 const techItemsUrl = 'https://edwardtanguay.netlify.app/share/techItems.json';
 
-const statuses = ['send', 'wait', 'interview', 'declined', 'accepted'];
 const displayKinds = ['list', 'full', 'addJob'];
+const statuses = ['send', 'wait', 'interview', 'declined', 'accepted'];
 
 function App() {
 	const [displayKind, setDisplayKind] = useState('');
@@ -70,7 +71,6 @@ function App() {
 			displayKindIndex = 0;
 		}
 		const _displayKind = displayKinds[displayKindIndex];
-		//console.log(_displayKind);
 		setDisplayKind(_displayKind);
 	};
 
@@ -90,7 +90,7 @@ function App() {
 
 		if (
 			fieldLogin === 'me' &&
-			hash === '8c6744c9d42ec2cb9e8885b54ff744d0' // psw:776
+			hash === '8c6744c9d42ec2cb9e8885b54ff744d0' //Psw:776
 		) {
 			setUserGroup('fullAccessMembers');
 			setUserIsLoggedIn(true);
@@ -103,7 +103,7 @@ function App() {
 
 		if (
 			fieldLogin === 'guest' &&
-			hash === '7ce3284b743aefde80ffd9aec500e085' //psw:887
+			hash === '7ce3284b743aefde80ffd9aec500e085'//Psw: 887
 		) {
 			setUserGroup('guests');
 			setUserIsLoggedIn(true);
@@ -112,12 +112,12 @@ function App() {
 			setFieldLogin('');
 			setFieldPassword('');
 		} else {
-			setFormMessage('Bad Login !!! Check your info');
+			setFormMessage('bad login');
 		}
 	};
 
 	const handleFieldLogin = (e) => {
-		setFieldLogin(e.target.value);
+		setFieldLogin(e.target.value.trim());
 	};
 
 	const handleFieldPassword = (e) => {
@@ -130,10 +130,9 @@ function App() {
 	};
 
 	const formIsValid = () => {
-		return (
-			fieldLogin.trim().length === 0 || fieldPassword.trim().length === 0
-		);
+		return fieldLogin.trim().length > 0 && fieldPassword.trim().length > 0;
 	};
+
 	return (
 		<div className="App">
 			<h1>Job Application Process</h1>
@@ -189,7 +188,7 @@ function App() {
 						</div>
 						<div className="buttonRow">
 							<button
-								disabled={formIsValid()}
+								disabled={!formIsValid()}
 								onClick={handleSubmitButton}
 							>
 								Enter

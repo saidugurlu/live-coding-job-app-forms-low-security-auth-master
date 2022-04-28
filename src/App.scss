@@ -139,10 +139,11 @@ body {
 						font-size: 1rem;
 						width: 300px;
 					}
+
 					.fieldNote {
+						color: rgb(225, 225, 133);
 						font-size: 1rem;
 						margin: 7px 0 0 5px;
-						color: rgb(226, 194, 134);
 					}
 				}
 
@@ -158,5 +159,77 @@ body {
 			}
 		}
 
+		.page_addJob {
+			h3 {
+				margin: 20px 0 10px 0;
+			}
+
+			ul.jobSites {
+				margin: 0;
+
+				a {
+					color: rgb(149, 223, 149);
+				}
+			}
+
+			form {
+				.row {
+					margin: 0 0 0.5rem 0;
+
+					input {
+						display: block;
+						font-size: 1.4rem;
+					}
+
+					::placeholder {
+						color: #aaa;
+					}
+
+					div.info {
+						font-size: 0.9rem;
+						color: yellow;
+					}
+
+					.field_position {
+						width: 500px;
+					}
+
+					.field_url {
+						width: 800px;
+					}
+
+					.field_skills {
+						width: 800px;
+					}
+
+					.field_bulkText {
+						width: 800px;
+						height: 100px;
+						font-size: 1.2rem;
+					}
+				}
+
+				button {
+					font-size: 1.2rem;
+					margin: 10px 0 0 0;
+				}
+			}
+
+			.formData {
+				background: #444;
+				padding: 1px 10px;
+				margin: 20px 0 0 0;
+				font-size: 0.9rem;
+				color: rgb(185, 157, 86);
+
+				pre {
+					white-space: pre-wrap;
+					white-space: -moz-pre-wrap;
+					white-space: -pre-wrap;
+					white-space: -o-pre-wrap;
+					word-wrap: break-word;
+				}
+			}
+		}
 	}
 }
