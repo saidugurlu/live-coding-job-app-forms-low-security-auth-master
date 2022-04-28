@@ -4,6 +4,7 @@ import _jobs from './data/jobs.json';
 import { JobsFull } from './components/JobsFull';
 import { JobsList } from './components/JobsList';
 import md5 from 'md5';
+import { ValidationFieldRequired } from './components/ValidationFieldRequired';
 
 _jobs.forEach((job) => {
 	job.status = 'accepted';
@@ -82,7 +83,7 @@ function App() {
 
 		if (
 			fieldLogin === 'me' &&
-			hash === '8c6744c9d42ec2cb9e8885b54ff744d0'
+			hash === '8c6744c9d42ec2cb9e8885b54ff744d0' // psw:776
 		) {
 			setUserGroup('fullAccessMembers');
 			setUserIsLoggedIn(true);
@@ -93,7 +94,7 @@ function App() {
 
 		if (
 			fieldLogin === 'guest' &&
-			hash === '7ce3284b743aefde80ffd9aec500e085'
+			hash === '7ce3284b743aefde80ffd9aec500e085' //psw:887
 		) {
 			setUserGroup('guests');
 			setUserIsLoggedIn(true);
@@ -112,7 +113,7 @@ function App() {
 	};
 
 	const handleFieldPassword = (e) => {
-		setFieldPassword(e.target.value);
+		setFieldPassword(e.target.value.trim());
 	};
 
 	const handleLogoutButton = () => {
@@ -159,6 +160,7 @@ function App() {
 								type="text"
 								id="login2"
 							/>
+							<ValidationFieldRequired field={fieldLogin} />
 						</div>
 						<div className="row">
 							<label htmlFor="password">Password</label>
@@ -168,6 +170,7 @@ function App() {
 								type="password"
 								id="password"
 							/>
+							<ValidationFieldRequired field={fieldPassword} />
 						</div>
 						<div className="buttonRow">
 							<button onClick={handleSubmitButton}>Enter</button>
